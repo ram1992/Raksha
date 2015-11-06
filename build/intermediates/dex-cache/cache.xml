@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="0632f06970823b7e3436f649bfa65b47035c91d0">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-469d7545d977299a4a80656ffa559ad5bc34e9f1.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3c729e6d76a36c5dc27e6a4c4009296f49eaa88a">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-5e02de2bea19d628087859ef800b5c39c6224add.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-7fef2c42f1172322c4c9aaa50c32b86b18e3f6ad.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="997773777cf3904c11d6764fe3b7668538220e49">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-5d30898a7ddc65446439627b9faed122d11139a7.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/libs/Parse-1.10.2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a859414011ce2c18187acc83319688e6bd340635">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/Parse-1.10.2-9d550d3ed499b57a6915a9ce57d937f3119efb65.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="82825756edeeb3b56b15e73b2edd56e93da5a444">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-0472eeee3b2a3a2c43cb4859bd68c3309cc04d91.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="993834cb17d07d51b92db89d2c330243592ebf77">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-f29c6ff689fc98c193ec9ec21884ae52b8306daa.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-6d36cdb8f380f005b10fe5b2262605d79513114a.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="325788a04b436a0bccbc5b4c54cf0f12ebdcbd2d">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-5dd490b048c046c3d1e40883387e6e0b86ac5050.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d93480da1d303122ee67dc3bc23e6297bdef9951">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-ae334bde4c918a1a37110d841f19cf5fbb8b43e0.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d61920aba361832a9545a43fa8c9453eb02f18f7">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-6d2581b1265dbecf7d23471d9c700f14454bd686.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-b5ee7301335cb0368597ab2f0863f6f03f41e1fd.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="2a7e47da654546f9457deb6132364f1bf33a1857">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-e51dece6974ff3835896f5d9ea9c5366a8539ac7.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="dcb5b75baf05d92e61d5706737200ee55949f97b">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-8617f56697a1cbf9ba02c3a898533b803b0baea5.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="9cf8c0ef60847621c7ad00b4f78dbfc9daba4af2">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-0432957179dba95cc9b3c44367fc65d9c52f6b70.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-4e889a1f89dcf5b73b476ce90a7c4e4eb7eb4645.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="041d93cf0533591c29d1d7263b2fa114dbfb20bd">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-e232432812ed89eab43ec89b7be023fd82841540.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3aed37c38c56679602255dd72ef356da5d327cda">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-50b67162899b6830cc635eccc1474fdd8c5ea433.jar" />
+    </item>
+    <item
+        jar="/home/ram/Packages/android-sdk-linux/extras/android/m2repository/com/android/support/support-annotations/23.1.0/support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.0-5c0359f8bf4d12116b5d88361061d6581634f25a.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b92002cb2f0e11a226ac5bac6dff1dc2a9d0b774">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-f99d21b364b882fc0d03af77e368608366c4da9e.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3b05c18f60969ecc2ba49c0409c4b96be2d9cb0c">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-bf478ab282d7d50598bf4c600974442274ac360b.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d294caf562c4c678b2ef351662a0ca6f1a4d06c0">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-1e7366b426e18b7159c7f24ced34d220c480679b.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="17449c47df35c754b257532052f1270c444f7993">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-33ab30b24ab0393ccb91e52c7c7c1f463b40b89e.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/libs/internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.0-5ab41ad36822a83a5919db45cec0dbd75266c010.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="482de223655d06253cc6a4955d653f8994169500">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-328e2304f03b810db5bfd1b5244b1590a5d60059.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-bcb3cb9de1c933ff87b44eedf4150c79267e78df.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-a289ccc4e25234fd0bba916a10045335fb834044.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="95758a2905669affbffc5ddd262921d375674fad">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-7e7c3819197b6e1b9094db846ff33748616fdbdd.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3178362320bcf51228835b60ff978efadfd1f783">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-49d2ed8b9c2335d6af1fd74a3bfe038af189cb55.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="97f3b099801a9ad9d70e835b9125273e986eb68d">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-387a10fd0a452460f0875b74c4a09bfa130ac623.jar" />
+    </item>
+    <item
+        jar="/home/ram/Github/Raksha/Raksha/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/classes-cff5f6779efe292acf37dffa2525aa61b9699b10.jar" />
+    </item>
+    <item
+        jar="/home/ram/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
+        <dex dex="/home/ram/Github/Raksha/Raksha/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0-6b1447766b48010272f443d660cfef8ceec94219.jar" />
+    </item>
+
+</items>
