@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Raksha.iml" filepath="$PROJECT_DIR$/Raksha.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mappwidgetlib/mappwidgetlib.iml" filepath="$PROJECT_DIR$/mappwidgetlib/mappwidgetlib.iml" />
     </modules>
   </component>
 </project>

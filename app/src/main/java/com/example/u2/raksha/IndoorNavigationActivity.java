@@ -17,10 +17,15 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.ls.widgets.map.MapWidget;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -56,8 +61,6 @@ public class IndoorNavigationActivity extends AppCompatActivity {
         mHandler = new Handler();
 
     }
-
-
     private void scanLeDevice(final boolean enable) {
 
         if (enable) {
@@ -192,7 +195,8 @@ public class IndoorNavigationActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        pullMap();
+        //pullMap();
+        pullMap2();
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
             Toast.makeText(this, "BLE Not Supported",
                     Toast.LENGTH_SHORT).show();
@@ -214,6 +218,13 @@ public class IndoorNavigationActivity extends AppCompatActivity {
         mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
         scanLeDevice(true);
     }
+    private void pullMap2() {
+        Toast.makeText(this.getApplicationContext(), getExternalFilesDir(Environment.DIRECTORY_PICTURES).toString(),Toast.LENGTH_LONG).show();
+/*        MapWidget map = new MapWidget(this, "drawable/a.JPG");
+        LinearLayout layout = (LinearLayout) findViewById(R.id.indoor);
+        layout.addView(map);*/
+    }
+
     @Override
     protected void onPause() {
         super.onPause();
