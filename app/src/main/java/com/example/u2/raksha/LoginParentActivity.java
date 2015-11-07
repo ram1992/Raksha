@@ -101,6 +101,7 @@ public class LoginParentActivity extends Activity {
                 } else {
                     Toast.makeText(LoginParentActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT)
                             .show();
+                    dialog.dismiss();
                 }
             }
         });

@@ -43,7 +43,7 @@ public class IndoorNavigationActivity extends AppCompatActivity {
     private ScanSettings settings;
     private int REQUEST_ENABLE_BT = 1;
     // Stops scanning after 10 seconds.
-    private static final long SCAN_PERIOD = 10000;
+    private static final long SCAN_PERIOD = 1000000000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ParseUser user;
@@ -52,16 +52,8 @@ public class IndoorNavigationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_indoor_navigation);
         user = ParseUser.getCurrentUser();
         status = (String) user.get("status");
-        pullMap();
+
         mHandler = new Handler();
-        if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
-            Toast.makeText(this, "BLE Not Supported",
-                    Toast.LENGTH_SHORT).show();
-            finish();
-        }
-        final BluetoothManager bluetoothManager =
-                (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
-        mBluetoothAdapter = bluetoothManager.getAdapter();
 
     }
 
@@ -83,7 +75,7 @@ public class IndoorNavigationActivity extends AppCompatActivity {
             if (Build.VERSION.SDK_INT < 21) {
                 mBluetoothAdapter.startLeScan(mLeScanCallback);
             } else {
-                mLEScanner.startScan(filters, settings, mScanCallback);
+                mLEScanner.startScan(mScanCallback);
             }
         } else {
             if (Build.VERSION.SDK_INT < 21) {
@@ -101,17 +93,22 @@ public class IndoorNavigationActivity extends AppCompatActivity {
             Log.i("callbackType", String.valueOf(callbackType));
             Log.i("result", result.toString());
             BluetoothDevice btDevice = result.getDevice();
+/*
             if(btDevice.toString().equalsIgnoreCase("64:5A:04:56:E3:18")){
                 Toast.makeText(IndoorNavigationActivity.this.getApplication(),btDevice.toString()+"I m here",Toast.LENGTH_SHORT).show();
             }
+*/
 
-
-/*            if(btDevice.getName() != null ){
-                Toast.makeText(IndoorNavigationActivity.this.getApplication(),btDevice.getName().toString()+"I m here",Toast.LENGTH_SHORT).show();
+            if(btDevice.getName() != null ){
+                Toast.makeText(IndoorNavigationActivity.this.getApplication(),btDevice.getName().toString()+" I am here",Toast.LENGTH_SHORT).show();
             }
             else{
-                Toast.makeText(IndoorNavigationActivity.this.getApplication(),btDevice.toString()+"I m here",Toast.LENGTH_SHORT).show();
-            }*/
+                Toast.makeText(IndoorNavigationActivity.this.getApplication(),btDevice.toString()+" I am here",Toast.LENGTH_SHORT).show();
+            }
+
+            Intent intent = new Intent(IndoorNavigationActivity.this,MainActivity.class);
+            startActivity(intent);
+
 
         }
 
@@ -137,6 +134,13 @@ public class IndoorNavigationActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             Log.i("onLeScan", device.toString());
+                            Toast.makeText(IndoorNavigationActivity.this.getApplicationContext(), "IMHERE", Toast.LENGTH_SHORT);
+                            if(device.getName() != null ){
+                                Toast.makeText(IndoorNavigationActivity.this.getApplication(),device.getName().toString()+"I m here",Toast.LENGTH_SHORT).show();
+                            }
+                            else{
+                                Toast.makeText(IndoorNavigationActivity.this.getApplication(),device.toString()+"I m here",Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
                 }
@@ -188,25 +192,41 @@ public class IndoorNavigationActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        pullMap();
+        if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
+            Toast.makeText(this, "BLE Not Supported",
+                    Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        final BluetoothManager bluetoothManager =
+                (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+        mBluetoothAdapter = bluetoothManager.getAdapter();
         if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+            mBluetoothAdapter.enable();
         } else {
             if (Build.VERSION.SDK_INT >= 21) {
-                mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
                 settings = new ScanSettings.Builder()
                         .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
                         .build();
                 filters = new ArrayList<ScanFilter>();
             }
-            scanLeDevice(true);
         }
+        mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
+        scanLeDevice(true);
     }
     @Override
     protected void onPause() {
         super.onPause();
         if (mBluetoothAdapter != null && mBluetoothAdapter.isEnabled()) {
-            //scanLeDevice(false);
+             scanLeDevice(false);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mBluetoothAdapter != null && mBluetoothAdapter.isEnabled()) {
+            scanLeDevice(false);
         }
     }
 }

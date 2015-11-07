@@ -52,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView image;
     Timer timer;
     TimerTask timerTask;
+    LocationManager locationManager;
+    LocationListener locationListener;
 
     //we are going to use a handler to be able to run in our TimerTask
     final Handler handler = new Handler();
@@ -65,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
         text2 = (TextView) findViewById(R.id.textview_3);
         image = (ImageView) findViewById(R.id.imageView);
         text2.setText("Loading Location.. Please wait..");
-        pullLocation();
-        checkSafety(status);
+        //pullLocation();
+
         defineButtons(status);
         welcomeMessage();
 
@@ -159,10 +161,10 @@ public class MainActivity extends AppCompatActivity {
     private void pullLocation() {
         if (status.equals("Child")) {
             // Acquire a reference to the system Location Manager
-            LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+            locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
 // Define a listener that responds to location updates
-            LocationListener locationListener = new LocationListener() {
+            locationListener = new LocationListener() {
                 public void onLocationChanged(Location location) {
                     // Called when a new location is found by the network location provider.
                     displayLocation(location);
@@ -189,11 +191,18 @@ public class MainActivity extends AppCompatActivity {
             //set a new Timer
             timer = new Timer();
 
-            //initialize the TimerTask's job
-            initializeTimerTask();
-
             //schedule the timer, after the first 5000ms the TimerTask will run every 10000ms
-            timer.schedule(timerTask, 5000, 10000); //
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    //initialize the TimerTask's job
+                    initializeTimerTask();
+                }
+            }, 5000, 10000); //
+
+
+
+
         }
 
     }
@@ -330,51 +339,51 @@ public class MainActivity extends AppCompatActivity {
         }
         startActivity(callIntent);
     }
+
+    //............................................................................................................
+
+    private Runnable Timer_Tick = new Runnable() {
+        public void run() {
+
+            //This method runs in the same thread as the UI.
+            // Ask for child's locatoin
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("Child");
+            query.whereEqualTo("parentEmailId", user.getUsername());
+            query.findInBackground(new FindCallback<ParseObject>() {
+                public void done(List<ParseObject> list, ParseException e) {
+                    if (e == null) {
+                        // Set up a progress dialog
+                        final ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+                        dialog.setMessage(getString(R.string.progress_pulling_locaion_parent));
+                        dialog.show();
+                        dialog.dismiss();
+                        Log.d("Users", "Retrieved " + list.size() + " users");
+                        if (list.size() > 0) {
+                            ParseGeoPoint location = list.get(0).getParseGeoPoint("currentLocation");
+                            displayLocation(location);
+                            Boolean safe = list.get(0).getBoolean("isSafe");
+                            if (safe != null) {
+                                checkSafety(Boolean.toString(safe));
+                            }
+                        } else {
+                            Toast.makeText(MainActivity.this, "Invalid Parent Email" + " " + list.size(), Toast.LENGTH_LONG)
+                                    .show();
+                        }
+                    } else {
+                        Log.d("score", "Error: " + e.getMessage());
+                        Toast.makeText(MainActivity.this, "Connection to Database failed. Check your Internet.", Toast.LENGTH_LONG)
+                                .show();
+                    }
+                }
+            });
+            //Do something to the UI thread here
+
+        }
+    };
     //............................................................................................................
 
     public void initializeTimerTask() {
-
-        timerTask = new TimerTask() {
-            public void run() {
-
-                //use a handler to run a toast that shows the current timestamp
-                handler.post(new Runnable() {
-                    public void run() {
-
-                        // Ask for child's locatoin
-                        ParseQuery<ParseObject> query = ParseQuery.getQuery("Child");
-                        query.whereEqualTo("parentEmailId", user.getUsername());
-                        query.findInBackground(new FindCallback<ParseObject>() {
-                            public void done(List<ParseObject> list, ParseException e) {
-                                if (e == null) {
-                                    // Set up a progress dialog
-                                    final ProgressDialog dialog = new ProgressDialog(MainActivity.this);
-                                    dialog.setMessage(getString(R.string.progress_pulling_locaion_parent));
-                                    dialog.show();
-                                    dialog.dismiss();
-                                    Log.d("Users", "Retrieved " + list.size() + " users");
-                                    if (list.size() > 0) {
-                                        ParseGeoPoint location = list.get(0).getParseGeoPoint("currentLocation");
-                                        displayLocation(location);
-                                        Boolean safe = list.get(0).getBoolean("isSafe");
-                                        if (safe != null) {
-                                            checkSafety(Boolean.toString(safe));
-                                        }
-                                    } else {
-                                        Toast.makeText(MainActivity.this, "Invalid Parent Email" + " " + list.size(), Toast.LENGTH_LONG)
-                                                .show();
-                                    }
-                                } else {
-                                    Log.d("score", "Error: " + e.getMessage());
-                                    Toast.makeText(MainActivity.this, "Connection to Database failed. Check your Internet.", Toast.LENGTH_LONG)
-                                            .show();
-                                }
-                            }
-                        });
-                    }
-                });
-            }
-        };
+        this.runOnUiThread(Timer_Tick);
     }
     //.................................................................................................................
 
@@ -425,6 +434,37 @@ public class MainActivity extends AppCompatActivity {
 
         //onResume we start our timer so it can start when the app comes from the background
         pullLocation();
+        checkSafety(status);
+    }
+
+    @Override
+    public void onStop() {  // After a pause OR at startup
+        super.onStop();
+        if (status.equals("Parent")) {
+            this.timer.cancel();
+        } else {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                return;
+            }
+            locationManager.removeUpdates(locationListener);
+        }
+
+
+    }
+    @Override
+    public void onPause() {  // After a pause OR at startup
+        super.onPause();
+        if (status.equals("Parent")) {
+            this.timer.cancel();
+        } else {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                return;
+            }
+            locationManager.removeUpdates(locationListener);
+        }
+
 
     }
 }
