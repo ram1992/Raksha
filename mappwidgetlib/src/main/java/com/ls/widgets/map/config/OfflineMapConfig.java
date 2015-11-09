@@ -32,7 +32,7 @@ public class OfflineMapConfig
 	
 	private boolean flingEnabled;
 	private boolean mapCenteringEnabled;
-	private boolean pinchZoomEnabled;
+	private boolean pinchZoomEnabled = true;
 	private boolean zoomBtnsVisible;
 	
 	private int trackballScrollStepX;

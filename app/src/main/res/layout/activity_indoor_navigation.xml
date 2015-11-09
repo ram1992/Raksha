@@ -8,10 +8,10 @@
     android:id="@+id/indoor"
     android:orientation="horizontal">
 
-    <!--com.example.u2.raksha.TouchImageView
+    <com.example.u2.raksha.TouchImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/imageView"
-        android:scaleType="fitXY"/-->
+        android:scaleType="fitXY"/>
 
-</LinearLayout>
+   </LinearLayout>

@@ -62,22 +62,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         user = ParseUser.getCurrentUser();
-        status = (String) user.get("status");
+        status = (String) user.get(getString(R.string.status));
         setContentView(R.layout.activity_main);
         text2 = (TextView) findViewById(R.id.textview_3);
         image = (ImageView) findViewById(R.id.imageView);
-        text2.setText("Loading Location.. Please wait..");
+        text2.setText(R.string.Loading);
         //pullLocation();
-
         defineButtons(status);
         welcomeMessage();
-
-
     }
     //............................................................................................................
 
     private void checkSafety(String status) {
-        if (status.equals("Child")) {
+        if (status.equals(getString(R.string.child))) {
             image.setImageResource(R.drawable.safe_true);
         } else {
             if (status.equals("true"))
@@ -101,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         button3 = (Button) findViewById(R.id.button3);
         button4 = (Button) findViewById(R.id.button4);
         button5 = (Button) findViewById(R.id.button5);
-        if (status.equals("Parent")) {
+        if (status.equals(getString(R.string.parent))) {
             button = (Button) findViewById(R.id.button);
             button.setText(R.string.call_police);
             button2.setText(R.string.call_child);
@@ -154,12 +151,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void welcomeMessage() {
         TextView text = (TextView) findViewById(R.id.textview_1);
-        text.setText("Hello " + user.getString("fullName"));
+        text.setText("Hello " + user.getString(getString(R.string.full_name)));
     }
     //............................................................................................................
 
     private void pullLocation() {
-        if (status.equals("Child")) {
+        if (status.equals(R.string.child)) {
             // Acquire a reference to the system Location Manager
             locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
@@ -199,8 +196,6 @@ public class MainActivity extends AppCompatActivity {
                     initializeTimerTask();
                 }
             }, 5000, 10000); //
-
-
 
 
         }
@@ -254,6 +249,7 @@ public class MainActivity extends AppCompatActivity {
                 sb.append(address.getLocality()).append("\n");
                 sb.append(address.getCountryName()).append("\n");
                 sb.append(address.getPostalCode()).append("\n");
+                sb.append("("+address.getLatitude()+","+address.getLongitude()+")");
             }
 
             addressString = sb.toString().replace("null\n", "");
@@ -283,7 +279,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
 
     }
     //............................................................................................................
@@ -443,7 +438,7 @@ public class MainActivity extends AppCompatActivity {
         if (status.equals("Parent")) {
             this.timer.cancel();
         } else {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
                 return;
             }
@@ -452,13 +447,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     @Override
     public void onPause() {  // After a pause OR at startup
         super.onPause();
         if (status.equals("Parent")) {
             this.timer.cancel();
         } else {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
                 return;
             }
