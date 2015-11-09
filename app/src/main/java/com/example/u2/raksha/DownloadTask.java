@@ -2,8 +2,11 @@ package com.example.u2.raksha;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.os.PowerManager;
+import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -45,8 +48,18 @@ public class DownloadTask extends AsyncTask<String, Integer, String> {
             int fileLength = connection.getContentLength();
 
             // download the file
+            File folder = new File("/sdcard/Android/media/com.Raksha");
+            boolean success = true;
+            if (!folder.exists()) {
+                success = folder.mkdir();
+            }
+            if (success) {
+                // Do something on success
+            } else {
+                // Do something else on failure
+            }
             input = connection.getInputStream();
-            output = new FileOutputStream("/sdcard/file_name.extension");
+            output = new FileOutputStream("/sdcard/Android/media/com.Raksha/cmap");
 
             byte data[] = new byte[4096];
             long total = 0;
@@ -79,4 +92,12 @@ public class DownloadTask extends AsyncTask<String, Integer, String> {
         }
         return null;
     }
+/*    @Override
+    protected void onPostExecute(String result) {
+        mWakeLock.release();
+        if (result != null)
+            Toast.makeText(context,"Download error: "+result, Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(context,"File downloaded", Toast.LENGTH_SHORT).show();
+    }*/
 }

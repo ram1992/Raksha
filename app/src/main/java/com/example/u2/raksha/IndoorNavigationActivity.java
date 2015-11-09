@@ -35,13 +35,21 @@ import com.ls.widgets.map.utils.PivotFactory;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class IndoorNavigationActivity extends AppCompatActivity {
@@ -57,12 +65,11 @@ public class IndoorNavigationActivity extends AppCompatActivity {
     // Stops scanning after 10 seconds.
     public static MapWidget mapWidget;
     private static final long SCAN_PERIOD = 1000000000;
-
+    final ParseUser user = new ParseUser();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ParseUser user;
-        downloadTask(1);
         setContentView(R.layout.activity_indoor_navigation);
         user = ParseUser.getCurrentUser();
         status = (String) user.get("status");
@@ -70,12 +77,104 @@ public class IndoorNavigationActivity extends AppCompatActivity {
         mHandler = new Handler();
 
     }
+    //............................................................................................................
 
-    private void downloadTask(int i) {
-        final DownloadTask downloadTask = new DownloadTask(IndoorNavigationActivity.this);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //downloadTask("1");
+        File target = new File("/sdcard/Android/media/com.Raksha");
+        File zipFile = new File("/sdcard/Android/media/com.Raksha/cmap");
+        try {
+            unzipTask(zipFile,target);
+        } catch (IOException e) {
 
-        downloadTask.execute("the url to the file you want to download");
+            e.printStackTrace();
+        }
+        pullMap();
+        if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
+            Toast.makeText(this, R.string.message_ble_not_supported,
+                    Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        final BluetoothManager bluetoothManager =
+                (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+        mBluetoothAdapter = bluetoothManager.getAdapter();
+        if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
+            mBluetoothAdapter.enable();
+        }
+        mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
+        scanLeDevice(true);
+    }
+    //............................................................................................................
 
+    public void unzipTask(File zipFile, File targetDirectory) throws IOException {
+        ZipInputStream zis = new ZipInputStream(
+                new BufferedInputStream(new FileInputStream(zipFile)));
+        try {
+            ZipEntry ze;
+            int count;
+            byte[] buffer = new byte[8192];
+            while ((ze = zis.getNextEntry()) != null) {
+                File file = new File(targetDirectory, ze.getName());
+                File dir = ze.isDirectory() ? file : file.getParentFile();
+                if (!dir.isDirectory() && !dir.mkdirs())
+                    throw new FileNotFoundException("Failed to ensure directory: " +
+                            dir.getAbsolutePath());
+                if (ze.isDirectory()){
+                    Toast.makeText(this.getApplicationContext(),"DONE ZIPPING",Toast.LENGTH_SHORT ).show();
+                    continue;
+                }
+                FileOutputStream fout = new FileOutputStream(file);
+                try {
+                    while ((count = zis.read(buffer)) != -1)
+                        fout.write(buffer, 0, count);
+                } finally {
+                    fout.close();
+                }
+            /* if time should be restored as well
+            long time = ze.getTime();
+            if (time > 0)
+                file.setLastModified(time);
+            */
+            }
+        } finally {
+            zis.close();
+        }
+    }
+    //............................................................................................................
+
+    private void pullMap() {
+        mapWidget = new MapWidget(IndoorNavigationActivity.this, "map");
+        mapWidget.setUseSoftwareZoom(true);
+        mapWidget.setSaveEnabled(true);
+        mapWidget.setMinZoomLevel(11);
+        mapWidget.setMaxZoomLevel(16);
+        mapWidget.getConfig().setZoomBtnsVisible(true);
+        LinearLayout layout = (LinearLayout) findViewById(R.id.indoor);
+        layout.setBackgroundColor(0xFFFFFFFF);
+        layout.addView(mapWidget);
+    }
+    //............................................................................................................
+
+    private void downloadTask(String i) {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery(getString(R.string.parse_indoor));
+        query.whereEqualTo(getString(R.string.parse_building_id), i);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> list, ParseException e) {
+                if (e == null) {
+                    ParseObject result = list.get(0);
+                    ParseFile map = result.getParseFile(getString(R.string.parse_building_plan));
+                    String url = map.getUrl();
+                    final DownloadTask downloadTask = new DownloadTask(IndoorNavigationActivity.this);
+                    AsyncTask<String, Integer, String> results = downloadTask.execute(url);
+                } else {
+                    Log.d("score", "Error: " + e.getMessage());
+                    Toast.makeText(IndoorNavigationActivity.this, R.string.error_internet_connection_database, Toast.LENGTH_LONG)
+                            .show();
+                }
+            }
+        });
     }
     //............................................................................................................
 
@@ -208,7 +307,7 @@ public class IndoorNavigationActivity extends AppCompatActivity {
     }*/
     //............................................................................................................
 
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+/*    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         TouchImageView bmImage;
 
         public DownloadImageTask(TouchImageView bmImage) {
@@ -231,54 +330,8 @@ public class IndoorNavigationActivity extends AppCompatActivity {
         protected void onPostExecute(Bitmap result) {
             bmImage.setImageBitmap(result);
         }
-    }
-    //............................................................................................................
+    }*/
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        pullMap();
-        if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
-            Toast.makeText(this, R.string.message_ble_not_supported,
-                    Toast.LENGTH_SHORT).show();
-            finish();
-        }
-        final BluetoothManager bluetoothManager =
-                (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
-        mBluetoothAdapter = bluetoothManager.getAdapter();
-        if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
-            mBluetoothAdapter.enable();
-        }
-        mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
-        scanLeDevice(true);
-    }
-    //............................................................................................................
-
-    private void pullMap() {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery(getString(R.string.indoor_registers));
-        query.whereEqualTo("reg", "1");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> dataHolder, ParseException e) {
-                if (e == null) {
-                    ParseFile plan = (ParseFile) dataHolder.get(0).get(getString(R.string.building_plan));
-                    // saveFile(plan.getUrl(),Environment.getExternalStorageDirectory().toString());
-                    mapWidget = new MapWidget(IndoorNavigationActivity.this, "map");
-                    mapWidget.setUseSoftwareZoom(true);
-                    mapWidget.setSaveEnabled(true);
-                    mapWidget.setMinZoomLevel(11);
-                    mapWidget.setMaxZoomLevel(16);
-                    mapWidget.getConfig().setZoomBtnsVisible(true);
-                    LinearLayout layout = (LinearLayout) findViewById(R.id.indoor);
-                    layout.setBackgroundColor(0xFFFFFFFF);
-                    layout.addView(mapWidget);
-                } else {
-                    Log.d("score", "Error: " + e.getMessage());
-                    Toast.makeText(IndoorNavigationActivity.this, R.string.error_internet_connection_database, Toast.LENGTH_SHORT)
-                            .show();
-                }
-            }
-        });
-    }
     //............................................................................................................
 /*
     private void saveFile(String url, String path){

@@ -75,8 +75,9 @@
     <string name="child">Child</string>
     <string name="full_name">fullName</string>
     <string name="message_ble_not_supported">Bluetooth Low Energy Not Supported</string>
-    <string name="indoor_registers">IndoorRegisters</string>
-    <string name="building_plan">buildingPlan</string>
     <string name="error_internet_connection_database">Connection to Database failed. Check your Internet.</string>
+    <string name="parse_indoor">Indoor</string>
+    <string name="parse_building_id">buildingId</string>
+    <string name="parse_building_plan">buildingPlan</string>
 
 </resources>
