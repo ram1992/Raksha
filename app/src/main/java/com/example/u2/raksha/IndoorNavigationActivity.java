@@ -1,7 +1,6 @@
 package com.example.u2.raksha;
 
 import android.annotation.TargetApi;
-import android.app.DownloadManager;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
@@ -13,11 +12,8 @@ import android.bluetooth.le.ScanSettings;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,7 +23,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import com.ls.widgets.map.MapWidget;
 import com.ls.widgets.map.model.MapLayer;
 import com.ls.widgets.map.model.MapObject;
@@ -35,18 +30,15 @@ import com.ls.widgets.map.utils.PivotFactory;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -75,6 +67,7 @@ public class IndoorNavigationActivity extends AppCompatActivity {
         status = (String) user.get("status");
 
         mHandler = new Handler();
+        downloadTask("1");
 
     }
     //............................................................................................................
@@ -82,15 +75,6 @@ public class IndoorNavigationActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //downloadTask("1");
-        File target = new File("/sdcard/Android/media/com.Raksha");
-        File zipFile = new File("/sdcard/Android/media/com.Raksha/cmap");
-        try {
-            unzipTask(zipFile,target);
-        } catch (IOException e) {
-
-            e.printStackTrace();
-        }
         pullMap();
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
             Toast.makeText(this, R.string.message_ble_not_supported,
@@ -116,13 +100,13 @@ public class IndoorNavigationActivity extends AppCompatActivity {
             int count;
             byte[] buffer = new byte[8192];
             while ((ze = zis.getNextEntry()) != null) {
+                Toast.makeText(this.getApplicationContext(),"DONE ZIPPING",Toast.LENGTH_SHORT ).show();
                 File file = new File(targetDirectory, ze.getName());
                 File dir = ze.isDirectory() ? file : file.getParentFile();
                 if (!dir.isDirectory() && !dir.mkdirs())
                     throw new FileNotFoundException("Failed to ensure directory: " +
                             dir.getAbsolutePath());
                 if (ze.isDirectory()){
-                    Toast.makeText(this.getApplicationContext(),"DONE ZIPPING",Toast.LENGTH_SHORT ).show();
                     continue;
                 }
                 FileOutputStream fout = new FileOutputStream(file);
@@ -145,10 +129,11 @@ public class IndoorNavigationActivity extends AppCompatActivity {
     //............................................................................................................
 
     private void pullMap() {
-        mapWidget = new MapWidget(IndoorNavigationActivity.this, "map");
+        File map = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/Android/media/com.Raksha/map");
+        mapWidget = new MapWidget(IndoorNavigationActivity.this,map);
         mapWidget.setUseSoftwareZoom(true);
         mapWidget.setSaveEnabled(true);
-        mapWidget.setMinZoomLevel(11);
+        mapWidget.setMinZoomLevel(10);
         mapWidget.setMaxZoomLevel(16);
         mapWidget.getConfig().setZoomBtnsVisible(true);
         LinearLayout layout = (LinearLayout) findViewById(R.id.indoor);
@@ -226,11 +211,6 @@ public class IndoorNavigationActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(IndoorNavigationActivity.this.getApplication(), btDevice.toString() + " I am here", Toast.LENGTH_SHORT).show();
             }
-
-            Intent intent = new Intent(IndoorNavigationActivity.this, MainActivity.class);
-            startActivity(intent);
-
-
         }
 
         @Override

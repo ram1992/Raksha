@@ -3,11 +3,9 @@ package com.example.u2.raksha;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -27,15 +25,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.parse.FindCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -156,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
     //............................................................................................................
 
     private void pullLocation() {
-        if (status.equals(R.string.child)) {
+        if (status.equals(getString(R.string.child))) {
             // Acquire a reference to the system Location Manager
             locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 

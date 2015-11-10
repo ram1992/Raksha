@@ -26,5 +26,28 @@ dependencies {
     compile 'com.parse.bolts:bolts-android:1.+'
     compile 'com.google.android.gms:play-services:8.1.0'
     compile 'com.android.support:design:23.1.0'
+    compile 'org.apache.commons:commons-compress:1.3'
     compile project(':mappwidgetlib')
+}
+
+android {
+    packagingOptions {
+        exclude 'constant-values.html'
+        exclude 'overview-tree.html'
+        exclude 'index.html'
+        exclude 'index-all.html'
+        exclude 'help-doc.html'
+        exclude 'stylesheet.css'
+        exclude 'package-list'
+        exclude 'deprecated-list.html'
+        exclude 'allclasses-noframe.html'
+        exclude 'resources/titlebar.gif'
+        exclude 'resources/titlebar_end.gif'
+        exclude 'resources/background.gif'
+        exclude 'resources/tab.gif'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'allclasses-frame.html'
+        exclude 'serialized-form.html'
+    }
 }
