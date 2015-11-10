@@ -469,10 +469,10 @@ public class MapWidget extends View implements MapLocationListener {
 	 *             when layer with the given id exists already.
 	 */
 	public MapLayer createLayer(long theLayerId) {
-		if (this.layersMap.containsKey(theLayerId)) {
+/*		if (this.layersMap.containsKey(theLayerId)) {
 			throw new IllegalArgumentException(
 					"Attempt to create layer with duplicated ID");
-		}
+		}*/
 
 		try {
 			MapLayer layer = new MapLayer(theLayerId, this);

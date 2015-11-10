@@ -229,7 +229,7 @@ public class IndoorNavigationActivity extends AppCompatActivity {
 
     private void placePointer(int x, int y) {
         // create map layer with specified ID
-        final long LAYER_ID = 2;
+        final long LAYER_ID = 5;
         MapLayer layer = mapWidget.createLayer(LAYER_ID);
 
         // getting icon from assets
