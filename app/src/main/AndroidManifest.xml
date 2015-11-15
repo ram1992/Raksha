@@ -16,7 +16,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -31,27 +31,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignUpParentActivity"
-            android:label="@string/title_activity_sign_up_parent" >
-        </activity>
-        <activity
             android:name=".WelcomeActivity"
             android:label="@string/title_activity_welcome" >
         </activity>
         <activity
-            android:name=".LoginParentActivity"
-            android:label="@string/title_activity_login_parent" >
-        </activity>
-        <activity
-            android:name=".LoginChildActivity"
-            android:label="@string/title_activity_login_child" >
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login" >
         </activity>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
         <activity
-            android:name=".SignUpChildActivity"
+            android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up_child" >
         </activity>
         <!--

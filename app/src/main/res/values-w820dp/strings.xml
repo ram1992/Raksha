@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="signup">Join now</string>
+    <string name="signin">Sign in</string>
+    <string name="error_blank_checkbox">Please Choose Parent or Child</string>
+</resources>

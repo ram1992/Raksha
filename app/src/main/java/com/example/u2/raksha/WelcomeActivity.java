@@ -18,38 +18,20 @@ public class WelcomeActivity extends Activity {
         setContentView(R.layout.activity_welcome);
 
         // Parent Log in button click handler
-        Button loginParentButton = (Button) findViewById(R.id.login_parent_button);
-        loginParentButton.setOnClickListener(new OnClickListener() {
+        Button loginButton = (Button) findViewById(R.id.signin);
+        loginButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 // Starts an intent of the log in activity
-                startActivity(new Intent(WelcomeActivity.this, LoginParentActivity.class));
-            }
-        });
-
-        // Log in button click handler
-        Button loginChildButton = (Button) findViewById(R.id.login_child_button);
-        loginChildButton.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                // Starts an intent of the log in activity
-                startActivity(new Intent(WelcomeActivity.this, LoginChildActivity.class));
-            }
-        });
-
-        // Parent Sign up button click handler
-        Button signupParentButton = (Button) findViewById(R.id.signup_parent_button);
-        signupParentButton.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                // Starts an intent for the sign up activity
-                startActivity(new Intent(WelcomeActivity.this, SignUpParentActivity.class));
+                startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
             }
         });
 
         // Child Sign up button click handler
-        Button signupChildButton = (Button) findViewById(R.id.signup_child_button);
-        signupChildButton.setOnClickListener(new OnClickListener() {
+        Button signupButton = (Button) findViewById(R.id.signup);
+        signupButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 // Starts an intent for the sign up activity
-                startActivity(new Intent(WelcomeActivity.this, SignUpChildActivity.class));
+                startActivity(new Intent(WelcomeActivity.this, SignUpActivity.class));
             }
         });
     }

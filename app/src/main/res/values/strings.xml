@@ -8,8 +8,6 @@
 
 
             <!-- Sign in related strings-->
-    <string name="title_activity_login_parent">Log in as Parent</string>
-    <string name="title_activity_login_child">Log in as Child</string>
     <string name="title_activity_signup">Sign up</string>
     <string name="prompt_name">Full Name</string>
     <string name="prompt_username">Email-ID</string>
@@ -28,12 +26,9 @@
 
 
     <!-- Sign up related strings-->
-    <string name="signup_parent">Sign up as Parent</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
 
     
-    <string name="login_parent">Log in as Parent</string>
-    <string name="login_child">Log in as Child</string>
     <string name="powered_by">Powered by</string>
     <string name="parse">Raksha</string>
     <string name="slogan">Always in your arms</string>
@@ -50,7 +45,6 @@
     <string name="title_activity_sample">Sample</string>
     <string name="title_activity_sign_up_parent">SignUpParentActivity</string>
     <string name="title_activity_sign_up_child">SignUpChildActivity</string>
-    <string name="signup_child">Sign Up as Child</string>
     <string name="progress_pulling_locaion_child">Pulling Your Location</string>
     <string name="progress_pulling_locaion_parent">Pulling Your Child\'s Location</string>
     <string name="title_activity_maps">Map</string>
@@ -79,5 +73,10 @@
     <string name="parse_indoor">Indoor</string>
     <string name="parse_building_id">buildingId</string>
     <string name="parse_building_plan">buildingPlan</string>
+    <string name="signup">Join now</string>
+    <string name="signin">Sign in</string>
+    <string name="error_blank_checkbox">Please choose parent or child</string>
+    <string name="login">Sign in</string>
+    <string name="title_activity_login">Raksha</string>
 
 </resources>
