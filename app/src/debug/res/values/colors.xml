@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2979ff</color>
-    <color name="colorPrimaryDark">#2962ff</color>
+    <color name="colorPrimary">#1de9b6</color>
+    <color name="colorPrimaryDark">#00bfa5</color>
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="windowBackground">#FFFFFF</color>
     <color name="navigationBarColor">#000000</color>
-    <color name="colorAccent">#82b1ff</color>
-    <color name="colorRaisedNormal1">#4fc3f7</color>
+    <color name="colorAccent">#a7ffeb</color>
+    <color name="colorRaisedNormal1">#4db6ac</color>
     <color name="colorRaisedNormal2">#bdbdbd</color>
+    <color name="colorBackground">#455a64</color>
 </resources>

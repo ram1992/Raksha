@@ -78,5 +78,6 @@
     <string name="error_blank_checkbox">Please choose parent or child</string>
     <string name="login">Sign in</string>
     <string name="title_activity_login">Raksha</string>
+    <string name="title_activity_sign_up">Sign Up</string>
 
 </resources>
