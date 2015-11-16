@@ -38,7 +38,7 @@ public class TwoFragment extends Fragment{
         LinearLayoutManager llm = new LinearLayoutManager(this.getContext());
         recyclerview.setLayoutManager(llm);
         initializeData();
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(cardDataList);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(cardDataList,this.getContext());
         recyclerview.setAdapter(adapter);
         return myFragmentView;
     }
@@ -51,7 +51,6 @@ public class TwoFragment extends Fragment{
         cardDataList.add(new CardData("Call Police", R.drawable.safe_true));
         cardDataList.add(new CardData("Send Child Information to Police", R.drawable.safe_true));
         cardDataList.add(new CardData("Call Child", R.drawable.safe_true));
-        cardDataList.add(new CardData("Show Map", R.drawable.safe_true));
         cardDataList.add(new CardData("Register For Indoor Navigation", R.drawable.safe_true));
     }
 

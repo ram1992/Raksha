@@ -2,14 +2,12 @@
 <resources>
     <color name="colorPrimary">#1de9b6</color>
     <color name="colorPrimaryDark">#00bfa5</color>
-    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="textColorPrimary">#212121</color>
     <color name="windowBackground">#FFFFFF</color>
     <color name="navigationBarColor">#000000</color>
     <color name="colorAccent">#a7ffeb</color>
     <color name="colorRaisedNormal1">#4db6ac</color>
     <color name="colorRaisedNormal2">#bdbdbd</color>
-    <color name="colorBackground">
-
-    </color>
+    <color name="colorBackground">#455a64</color>
     <color name="colorCardView">#cfd8dc</color>
 </resources>
