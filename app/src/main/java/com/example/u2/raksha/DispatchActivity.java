@@ -11,10 +11,8 @@ import android.os.Handler;
 
 import com.parse.ParseUser;
 
-import java.io.Serializable;
-
 /**
- * Activity which starts an intent for either the logged in (MainActivity) or logged out
+ * Activity which starts an intent for either the logged in (TempActivity) or logged out
  * (SignUpOrLoginActivity) activity.
  */
 public class DispatchActivity extends Activity {

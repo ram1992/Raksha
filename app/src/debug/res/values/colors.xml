@@ -8,5 +8,8 @@
     <color name="colorAccent">#a7ffeb</color>
     <color name="colorRaisedNormal1">#4db6ac</color>
     <color name="colorRaisedNormal2">#bdbdbd</color>
-    <color name="colorBackground">#455a64</color>
+    <color name="colorBackground">
+
+    </color>
+    <color name="colorCardView">#cfd8dc</color>
 </resources>

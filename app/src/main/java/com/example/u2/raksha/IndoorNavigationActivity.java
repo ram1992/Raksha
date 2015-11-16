@@ -266,79 +266,7 @@ public class IndoorNavigationActivity extends AppCompatActivity {
                     });
                 }
             };
-    //............................................................................................................
 
-/*    private void pullMap() {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("IndoorRegisters");
-        query.whereEqualTo("reg", "1");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> dataHolder, ParseException e) {
-                if (e == null) {
-                    ParseFile plan = (ParseFile) dataHolder.get(0).get("buildingPlan");
-                    new DownloadImageTask((TouchImageView) findViewById(R.id.imageView))
-                            .execute(plan.getUrl());
-                } else {
-                    Log.d("score", "Error: " + e.getMessage());
-                    Toast.makeText(IndoorNavigationActivity.this, "Connection to Database failed. Check your Internet.", Toast.LENGTH_SHORT)
-                            .show();
-                }
-            }
-        });
-    }*/
-    //............................................................................................................
-
-/*    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        TouchImageView bmImage;
-
-        public DownloadImageTask(TouchImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-            try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return mIcon11;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
-        }
-    }*/
-
-    //............................................................................................................
-/*
-    private void saveFile(String url, String path){
-        File direct = new File(path);
-
-        if (!direct.exists()) {
-            direct.mkdirs();
-        }
-
-        DownloadManager mgr = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
-
-        Uri downloadUri = Uri.parse(url);
-        DownloadManager.Request request = new DownloadManager.Request(
-                downloadUri);
-
-        request.setAllowedNetworkTypes(
-                DownloadManager.Request.NETWORK_WIFI
-                        | DownloadManager.Request.NETWORK_MOBILE)
-                .setAllowedOverRoaming(false).setTitle("Demo")
-                .setDescription("Something useful. No, really.")
-                .setDestinationInExternalPublicDir("/Pictures", "plan.jpg");
-        mgr.enqueue(request);
-        File file = new File(path+"/Pictures/plan.jpg");
-        if (file.exists()){
-        }
-
-    }*/
     //............................................................................................................
 
     @Override
@@ -358,4 +286,8 @@ public class IndoorNavigationActivity extends AppCompatActivity {
         }
     }
     //............................................................................................................
+    public void onBackPressed() {
+        Intent intent = new Intent(IndoorNavigationActivity.this,MainActivity.class);
+        startActivity(intent);
+    }
 }

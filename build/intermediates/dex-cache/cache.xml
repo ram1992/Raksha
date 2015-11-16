@@ -2,193 +2,11 @@
 <items version="2" >
 
     <item
-        jar="D:\Android SDK\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-3bf392ca3ea73f845ce402afc69efff78367af31.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="95758a2905669affbffc5ddd262921d375674fad">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-45dfa9b73d4b09d33c33ec7df1c48f0edd0b7512.jar" />
-    </item>
-    <item
         jar="C:\Users\u2\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-compress\1.3\613a08bc72e2e9a43c9f87b9ff8352b47e18e3ae\commons-compress-1.3.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="613a08bc72e2e9a43c9f87b9ff8352b47e18e3ae">
         <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\commons-compress-1.3-e08d44410ddb4ada0e15eddd54fb1c8297586edd.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3b05c18f60969ecc2ba49c0409c4b96be2d9cb0c">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-2726701cd47a79f1fee800b998b5cedd8407e4a8.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3aed37c38c56679602255dd72ef356da5d327cda">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-2cdbc065b61d6b75963ba02d19f76b5d92dede1b.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\libs\internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="0632f06970823b7e3436f649bfa65b47035c91d0">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-997bd870e2aa63c1ea6f574711bd1462779197cc.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d61920aba361832a9545a43fa8c9453eb02f18f7">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-7e66c7693b03d0d52414afa55452ba1d74adb0d6.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="97f3b099801a9ad9d70e835b9125273e986eb68d">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-b21fb18a522b5a393588dfbdc45db1793575aaa1.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="041d93cf0533591c29d1d7263b2fa114dbfb20bd">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-eadbbb094ba94fc3d7120751f2aee2ee6441ff44.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-a6338105fcaa0ef973068a2d6dc42194b4dc61c3.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\libs\Parse-1.10.2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="a859414011ce2c18187acc83319688e6bd340635">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\Parse-1.10.2-a70ae52ea6e64fdbb49fe80b49a0f33a69e659ea.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3c729e6d76a36c5dc27e6a4c4009296f49eaa88a">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-a6354e416062a24d5a0ff4f6c062719346502c95.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="17449c47df35c754b257532052f1270c444f7993">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-cff416fb7722f87513f523ff88cb98bf166029ea.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d294caf562c4c678b2ef351662a0ca6f1a4d06c0">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-43bb977a93fa7939e725cf6a7743c1848c2fdf33.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-5eae7df40f9f5153e58dd8ddbcdb2663e0b91acb.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="997773777cf3904c11d6764fe3b7668538220e49">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-e1696b3a3e51df9d096e2bed571602a818b94d8a.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d93480da1d303122ee67dc3bc23e6297bdef9951">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-56284afe4b140f27e657062d4a64818e12eeeaba.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="b92002cb2f0e11a226ac5bac6dff1dc2a9d0b774">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-ef44a73c67e67c53b7a69f7684275517721c7171.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="993834cb17d07d51b92db89d2c330243592ebf77">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-470a4c2fd9dc6e032ac419d489b822adb04860d4.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\Raksha\mappwidgetlib\unspecified\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="681f028391a590f58b5d97790cf7e80189d8434d">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-8e71a5e04b5c3b50d228a45981352c350e28fb0f.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-58f929416ec860f182d8236133999a7ed06f971f.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-d853a81d0db6fa11ea1663c457eb6a607a724ecb.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="9cf8c0ef60847621c7ad00b4f78dbfc9daba4af2">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-ec3fa45eac4696ea4918904c6e7834ad0dce45f8.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-abc1fd48e729a7603ec8e470c511036797e758b8.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="2a7e47da654546f9457deb6132364f1bf33a1857">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-6a12c7ae425b1cee0d4ade5d8a0a4068ac922161.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-e16cfd93753a051764cd08f8ec07f948875962c8.jar" />
-    </item>
-    <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="82825756edeeb3b56b15e73b2edd56e93da5a444">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-29913f17e4aa093fd7a9d1069d83d9d2fbe293a7.jar" />
     </item>
     <item
         jar="C:\Users\u2\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.3.0\8a62fd16fcc1c06f284fc98e6cbded2a5af1dd4c\bolts-tasks-1.3.0.jar"
@@ -198,11 +16,11 @@
         <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\bolts-tasks-1.3.0-4b158332f2b7fa71faaf627b82ddf0b4e15e89ec.jar" />
     </item>
     <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\8.1.0\jars\classes.jar"
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\8.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="325788a04b436a0bccbc5b4c54cf0f12ebdcbd2d">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-f83bdfdc1b082b1713b03588f3419c487094986a.jar" />
+        sha1="95758a2905669affbffc5ddd262921d375674fad">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-45dfa9b73d4b09d33c33ec7df1c48f0edd0b7512.jar" />
     </item>
     <item
         jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
@@ -212,6 +30,34 @@
         <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-8f713994331d9e4ad78e39b85039ee1c8ae99cf0.jar" />
     </item>
     <item
+        jar="C:\Users\u2\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-applinks\1.3.0\bc535105332645408ef5f1380215cc954b842178\bolts-applinks-1.3.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="bc535105332645408ef5f1380215cc954b842178">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\bolts-applinks-1.3.0-fa97452655d276c70893c05ae1aa4de95e3dffaf.jar" />
+    </item>
+    <item
+        jar="D:\Android SDK\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-3bf392ca3ea73f845ce402afc69efff78367af31.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b92002cb2f0e11a226ac5bac6dff1dc2a9d0b774">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-ef44a73c67e67c53b7a69f7684275517721c7171.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3b05c18f60969ecc2ba49c0409c4b96be2d9cb0c">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-2726701cd47a79f1fee800b998b5cedd8407e4a8.jar" />
+    </item>
+    <item
         jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\8.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
@@ -219,18 +65,46 @@
         <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-9b456e10033ebc5549368e317d77272d2527a286.jar" />
     </item>
     <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\8.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-c4961cfec9993c01be42c4beb33dc25ecc1479fc.jar" />
+        sha1="17449c47df35c754b257532052f1270c444f7993">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-cff416fb7722f87513f523ff88cb98bf166029ea.jar" />
     </item>
     <item
-        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\8.1.0\jars\classes.jar"
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\8.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="3178362320bcf51228835b60ff978efadfd1f783">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-abc288c13518f0307094b023b286b14a8db53f5e.jar" />
+        sha1="d61920aba361832a9545a43fa8c9453eb02f18f7">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-7e66c7693b03d0d52414afa55452ba1d74adb0d6.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="325788a04b436a0bccbc5b4c54cf0f12ebdcbd2d">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-f83bdfdc1b082b1713b03588f3419c487094986a.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\it.neokree\MaterialTabs\0.11\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="fef6aa7ea0bb2d6adf10965d0a5bb8e353517bff">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-a2dda136195c7f2b94ab03595c17f33e5f064dcb.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3aed37c38c56679602255dd72ef356da5d327cda">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-2cdbc065b61d6b75963ba02d19f76b5d92dede1b.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="9cf8c0ef60847621c7ad00b4f78dbfc9daba4af2">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-ec3fa45eac4696ea4918904c6e7834ad0dce45f8.jar" />
     </item>
     <item
         jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-measurement\8.1.0\jars\classes.jar"
@@ -240,11 +114,158 @@
         <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-ba5f4a7c86336b1e312cc3bac1cc1df54ee54af5.jar" />
     </item>
     <item
-        jar="C:\Users\u2\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-applinks\1.3.0\bc535105332645408ef5f1380215cc954b842178\bolts-applinks-1.3.0.jar"
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\8.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="bc535105332645408ef5f1380215cc954b842178">
-        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\bolts-applinks-1.3.0-fa97452655d276c70893c05ae1aa4de95e3dffaf.jar" />
+        sha1="997773777cf3904c11d6764fe3b7668538220e49">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-e1696b3a3e51df9d096e2bed571602a818b94d8a.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-c4961cfec9993c01be42c4beb33dc25ecc1479fc.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-d853a81d0db6fa11ea1663c457eb6a607a724ecb.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-abc1fd48e729a7603ec8e470c511036797e758b8.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-58f929416ec860f182d8236133999a7ed06f971f.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3c729e6d76a36c5dc27e6a4c4009296f49eaa88a">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-a6354e416062a24d5a0ff4f6c062719346502c95.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d93480da1d303122ee67dc3bc23e6297bdef9951">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-56284afe4b140f27e657062d4a64818e12eeeaba.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.github.markushi\android-ui\1.2\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="96436aef5f48b09aca1e0183dfcd7782aa580bd6">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-99e8dd5d4e76e36835e81470307d61a861f93fab.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="993834cb17d07d51b92db89d2c330243592ebf77">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-470a4c2fd9dc6e032ac419d489b822adb04860d4.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="2a7e47da654546f9457deb6132364f1bf33a1857">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-6a12c7ae425b1cee0d4ade5d8a0a4068ac922161.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3178362320bcf51228835b60ff978efadfd1f783">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-abc288c13518f0307094b023b286b14a8db53f5e.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d294caf562c4c678b2ef351662a0ca6f1a4d06c0">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-43bb977a93fa7939e725cf6a7743c1848c2fdf33.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\Raksha\mappwidgetlib\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b74f65d728806eb45703812a1556f65bc7cbd373">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-8e71a5e04b5c3b50d228a45981352c350e28fb0f.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\libs\Parse-1.10.2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a859414011ce2c18187acc83319688e6bd340635">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\Parse-1.10.2-a70ae52ea6e64fdbb49fe80b49a0f33a69e659ea.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-5eae7df40f9f5153e58dd8ddbcdb2663e0b91acb.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="82825756edeeb3b56b15e73b2edd56e93da5a444">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-29913f17e4aa093fd7a9d1069d83d9d2fbe293a7.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="97f3b099801a9ad9d70e835b9125273e986eb68d">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-b21fb18a522b5a393588dfbdc45db1793575aaa1.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="0632f06970823b7e3436f649bfa65b47035c91d0">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-997bd870e2aa63c1ea6f574711bd1462779197cc.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="39ae02ce40c3ac828abbf780ce0ff5d7a28b7d6a">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-a0a9605ec29f179fc36c93378e7ba5048b2db4c9.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="041d93cf0533591c29d1d7263b2fa114dbfb20bd">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-eadbbb094ba94fc3d7120751f2aee2ee6441ff44.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-e16cfd93753a051764cd08f8ec07f948875962c8.jar" />
+    </item>
+    <item
+        jar="D:\GitHub\Raksha\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="D:\GitHub\Raksha\app\build\intermediates\pre-dexed\debug\classes-a6338105fcaa0ef973068a2d6dc42194b4dc61c3.jar" />
     </item>
 
 </items>

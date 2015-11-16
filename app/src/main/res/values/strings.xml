@@ -80,4 +80,15 @@
     <string name="title_activity_login">Raksha</string>
     <string name="title_activity_sign_up">Sign Up</string>
 
+    <string-array
+        name="tab_array">
+        <item>TAB 1</item>
+        <item>TAB 2</item>
+        <item>TAB 3</item>
+    </string-array>
+    <string name="title_activity_main2">Main2Activity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
