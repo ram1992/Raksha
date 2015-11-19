@@ -16,10 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TwoFragment extends Fragment{
+public class FeaturesFragment extends Fragment{
     private RecyclerView recyclerview;
     private List<CardData> cardDataList;
-    public TwoFragment() {
+    public FeaturesFragment() {
         // Required empty public constructor
     }
 
@@ -32,7 +32,7 @@ public class TwoFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View myFragmentView = inflater.inflate(R.layout.fragment_two, container, false);
+        View myFragmentView = inflater.inflate(R.layout.fragment_features, container, false);
         recyclerview = (RecyclerView)myFragmentView.findViewById(R.id.drawerlist);
         recyclerview.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this.getContext());

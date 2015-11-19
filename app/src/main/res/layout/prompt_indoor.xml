@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:id="@id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        card_view:cardBackgroundColor="@color/windowBackground">
+
+        <TextView
+            android:id="@+id/textview_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please Enter The Buliding Number"
+            android:textSize="20dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="top"
+            android:textColor="@color/textColorPrimary"/>
+
+        <EditText
+            android:id="@+id/editText_buildingnum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"/>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

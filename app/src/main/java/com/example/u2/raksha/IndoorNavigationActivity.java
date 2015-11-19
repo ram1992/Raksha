@@ -39,12 +39,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-public class IndoorNavigationActivity extends AppCompatActivity {
+public class IndoorNavigationActivity extends AppCompatActivity implements TaskListener {
     private static final int MAP_ID = 1;
     private BluetoothAdapter mBluetoothAdapter;
     private boolean mScanning;
@@ -58,6 +59,9 @@ public class IndoorNavigationActivity extends AppCompatActivity {
     public static MapWidget mapWidget;
     private static final long SCAN_PERIOD = 1000000000;
     final ParseUser user = new ParseUser();
+    String bNum;
+    TaskListener taskListener;
+    String lastbNum = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,17 +69,24 @@ public class IndoorNavigationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_indoor_navigation);
         user = ParseUser.getCurrentUser();
         status = (String) user.get("status");
-
         mHandler = new Handler();
-        downloadTask("1");
-
     }
     //............................................................................................................
 
     @Override
     protected void onResume() {
         super.onResume();
-        pullMap();
+        taskListener = this;
+        Intent myIntent = getIntent();
+        bNum = myIntent.getStringExtra("buildingNumber");
+        if(!bNum.isEmpty()){
+            downloadTask(bNum,taskListener);
+        }
+        else{
+            pullMap();
+        }
+
+
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
             Toast.makeText(this, R.string.message_ble_not_supported,
                     Toast.LENGTH_SHORT).show();
@@ -142,7 +153,7 @@ public class IndoorNavigationActivity extends AppCompatActivity {
     }
     //............................................................................................................
 
-    private void downloadTask(String i) {
+    private void downloadTask(String i, final TaskListener listener) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(getString(R.string.parse_indoor));
         query.whereEqualTo(getString(R.string.parse_building_id), i);
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -151,7 +162,7 @@ public class IndoorNavigationActivity extends AppCompatActivity {
                     ParseObject result = list.get(0);
                     ParseFile map = result.getParseFile(getString(R.string.parse_building_plan));
                     String url = map.getUrl();
-                    final DownloadTask downloadTask = new DownloadTask(IndoorNavigationActivity.this);
+                    final DownloadTask downloadTask = new DownloadTask(IndoorNavigationActivity.this,taskListener);
                     AsyncTask<String, Integer, String> results = downloadTask.execute(url);
                 } else {
                     Log.d("score", "Error: " + e.getMessage());
@@ -289,5 +300,13 @@ public class IndoorNavigationActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent = new Intent(IndoorNavigationActivity.this,MainActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void taskComplete(ArrayList<String> list) {
+        if (list.size() != 0) {
+            Log.i("Log", "list  " + list.get(0));
+        }
+        pullMap();
     }
 }

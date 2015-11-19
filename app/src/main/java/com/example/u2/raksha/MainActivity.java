@@ -1,7 +1,6 @@
 package com.example.u2.raksha;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +14,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.parse.Parse;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
@@ -45,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new OneFragment(), "HOME");
-        adapter.addFragment(new TwoFragment(), "CALL OR TEXT");
-        adapter.addFragment(new ThreeFragment(), "INDOOR");
+        adapter.addFragment(new TrackingFragment(), "HOME");
+        adapter.addFragment(new FeaturesFragment(), "CALL OR TEXT");
+        adapter.addFragment(new IndoorFragment(), "INDOOR");
         viewPager.setAdapter(adapter);
     }
     //............................................................................................................

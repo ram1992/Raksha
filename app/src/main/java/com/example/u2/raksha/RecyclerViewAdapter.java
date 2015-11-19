@@ -2,16 +2,19 @@ package com.example.u2.raksha;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -81,12 +84,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         // - replace the contents of the view with that element
         holder.mTextView.setText(mCardData.get(position).name);
 //        holder.mImageView.setImageResource(mCardData.get(position).photoId);
-        holder.mTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
     }
     // Return the size of your dataset (invoked by the layout manager)
@@ -112,12 +109,36 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         mContext.startActivity(callIntent);
     }
     private void registerIndoor() {
-        Intent callIntent = new Intent(Intent.ACTION_CALL);
-        callIntent.setData(Uri.parse("tel:"));
-        if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        mContext.startActivity(callIntent);
+        LayoutInflater li = LayoutInflater.from(mContext);
+        View promptsView = li.inflate(R.layout.prompt_indoor, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                mContext);
+
+        // set prompts.xml to alertdialog builder
+        alertDialogBuilder.setView(promptsView);
+
+        final EditText userInput = (EditText) promptsView
+                .findViewById(R.id.editText_buildingnum);
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("Done",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // get user input and set it to result
+                                // edit tex
+                                Intent intent = new Intent(mContext,IndoorNavigationActivity.class);
+                                intent.putExtra("buildingNumber",userInput.getText().toString());
+                                mContext.startActivity(intent);
+                            }
+                        });
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
     }
     private void textPolice() {
         Intent callIntent = new Intent(Intent.ACTION_CALL);

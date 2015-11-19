@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -41,7 +42,7 @@ import java.util.TimerTask;
  */
 
 
-public class OneFragment extends Fragment{
+public class TrackingFragment extends Fragment{
     private static final String TAG = "BroadcastTest";
     String status;
     String latitude;
@@ -54,7 +55,7 @@ public class OneFragment extends Fragment{
     LocationManager locationManager;
     LocationListener locationListener;
     Handler handler;
-    public OneFragment() {
+    public TrackingFragment() {
         // Required empty public constructor
     }
 
@@ -69,7 +70,7 @@ public class OneFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View myFragmentView = inflater.inflate(R.layout.fragment_one, container, false);
+        View myFragmentView = inflater.inflate(R.layout.fragment_tracking, container, false);
         text1 = (TextView)myFragmentView.findViewById(R.id.textview_1);
         handler= new Handler();
 
@@ -91,7 +92,15 @@ public class OneFragment extends Fragment{
             locationListener = new LocationListener() {
                 public void onLocationChanged(Location location) {
                     // Called when a new location is found by the network location provider.
-                    displayLocation(location);
+                    if(location.getProvider().equalsIgnoreCase("network")){
+                        Toast.makeText(getContext(),"Indoor"+locationManager.getGpsStatus(null),Toast.LENGTH_SHORT).show();
+                        displayLocation(location);
+
+                    }
+                    else{
+                        Toast.makeText(getContext(), "Outdoor" + locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)+location.getProvider(), Toast.LENGTH_SHORT).show();
+                        //displayLocation(location);
+                    }
                 }
 
                 public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -110,6 +119,7 @@ public class OneFragment extends Fragment{
 
                 return;
             }
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
         } else {
             //set a new Timer
@@ -130,6 +140,7 @@ public class OneFragment extends Fragment{
             StringBuilder sb = new StringBuilder();
             if (addresses.size() > 0) {
                 Address address = addresses.get(0);
+                sb.append(address.getUrl()).append("\n");
                 sb.append(address.getThoroughfare()).append("\n");
                 sb.append(address.getSubLocality()).append("\n");
                 sb.append(address.getSubAdminArea()).append("\n");
@@ -162,7 +173,7 @@ public class OneFragment extends Fragment{
 
                 } else {
                     Log.d("score", "Error: " + e.getMessage());
-                    Toast.makeText(OneFragment.this.getContext(), "Connection to Database failed. Check your Internet.", Toast.LENGTH_LONG)
+                    Toast.makeText(TrackingFragment.this.getContext(), "Connection to Database failed. Check your Internet.", Toast.LENGTH_LONG)
                             .show();
                 }
             }
@@ -252,7 +263,7 @@ public class OneFragment extends Fragment{
                 public void done(List<ParseObject> list, ParseException e) {
                     if (e == null) {
                         // Set up a progress dialog
-                        final ProgressDialog dialog = new ProgressDialog(OneFragment.this.getContext());
+                        final ProgressDialog dialog = new ProgressDialog(TrackingFragment.this.getContext());
                         dialog.setMessage(getString(R.string.progress_pulling_locaion_parent));
                         dialog.show();
                         dialog.dismiss();
@@ -265,12 +276,12 @@ public class OneFragment extends Fragment{
 //                                checkSafety(Boolean.toString(safe));
                             }
                         } else {
-                            Toast.makeText(OneFragment.this.getContext(), "Invalid Parent Email" + " " + list.size(), Toast.LENGTH_LONG)
+                            Toast.makeText(TrackingFragment.this.getContext(), "Invalid Parent Email" + " " + list.size(), Toast.LENGTH_LONG)
                                     .show();
                         }
                     } else {
                         Log.d("score", "Error: " + e.getMessage());
-                        Toast.makeText(OneFragment.this.getContext(), "Connection to Database failed. Check your Internet.", Toast.LENGTH_LONG)
+                        Toast.makeText(TrackingFragment.this.getContext(), "Connection to Database failed. Check your Internet.", Toast.LENGTH_LONG)
                                 .show();
                     }
                 }
