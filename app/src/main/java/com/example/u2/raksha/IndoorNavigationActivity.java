@@ -80,13 +80,12 @@ public class IndoorNavigationActivity extends AppCompatActivity implements TaskL
         Intent myIntent = getIntent();
         bNum = myIntent.getStringExtra("buildingNumber");
         if(!bNum.isEmpty()){
-            downloadTask(bNum,taskListener);
+            downloadTask(bNum);
         }
         else{
             pullMap();
+
         }
-
-
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
             Toast.makeText(this, R.string.message_ble_not_supported,
                     Toast.LENGTH_SHORT).show();
@@ -153,7 +152,8 @@ public class IndoorNavigationActivity extends AppCompatActivity implements TaskL
     }
     //............................................................................................................
 
-    private void downloadTask(String i, final TaskListener listener) {
+    private void downloadTask(String i) {
+        bNum="";
         ParseQuery<ParseObject> query = ParseQuery.getQuery(getString(R.string.parse_indoor));
         query.whereEqualTo(getString(R.string.parse_building_id), i);
         query.findInBackground(new FindCallback<ParseObject>() {
