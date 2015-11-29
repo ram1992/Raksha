@@ -10,6 +10,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -123,12 +124,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         // set dialog message
         alertDialogBuilder
-                .setCancelable(false)
+                .setCancelable(true)
                 .setPositiveButton("Done",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // get user input and set it to result
                                 // edit tex
+                                if (id == KeyEvent.KEYCODE_BACK){
+                                    dialog.dismiss();
+                                }
                                 Intent intent = new Intent(mContext,IndoorNavigationActivity.class);
                                 intent.putExtra("buildingNumber",userInput.getText().toString());
                                 mContext.startActivity(intent);
@@ -139,6 +143,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         // show it
         alertDialog.show();
+        alertDialog.getWindow().setLayout(1000,1000);
     }
     private void textPolice() {
         Intent callIntent = new Intent(Intent.ACTION_CALL);

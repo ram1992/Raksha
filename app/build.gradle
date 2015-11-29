@@ -31,6 +31,7 @@ dependencies {
     compile 'it.neokree:MaterialTabs:0.11'
     compile 'org.apache.commons:commons-compress:1.3'
     compile project(':mappwidgetlib')
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.1.+'
 }
 
 android {

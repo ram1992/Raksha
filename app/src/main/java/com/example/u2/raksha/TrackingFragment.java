@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -16,11 +15,16 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +53,7 @@ public class TrackingFragment extends Fragment{
     String longitude;
     ParseUser user;
     TextView text1;
+    TextView text2;
     ImageView image;
     Timer timer;
     TimerTask timerTask;
@@ -64,6 +69,7 @@ public class TrackingFragment extends Fragment{
         super.onCreate(savedInstanceState);
         user = ParseUser.getCurrentUser();
         status = (String) user.get(getString(R.string.status));
+
     }
 
     @Override
@@ -71,7 +77,31 @@ public class TrackingFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myFragmentView = inflater.inflate(R.layout.fragment_tracking, container, false);
-        text1 = (TextView)myFragmentView.findViewById(R.id.textview_1);
+        text2 = (TextView)myFragmentView.findViewById(R.id.textview_welcome);
+        text2.setText("Hi "+user.getString("fullName"));
+        image = (ImageView)myFragmentView.findViewById(R.id.imageView_login_loading);
+        text1 = (TextView)myFragmentView.findViewById(R.id.textview_location);
+        text1.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // TODO Auto-generated method stub
+                image.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+
+            }
+        });
         handler= new Handler();
 
         CardView card = (CardView)myFragmentView.findViewById(R.id.card_view);
@@ -92,15 +122,8 @@ public class TrackingFragment extends Fragment{
             locationListener = new LocationListener() {
                 public void onLocationChanged(Location location) {
                     // Called when a new location is found by the network location provider.
-                    if(location.getProvider().equalsIgnoreCase("network")){
-                        Toast.makeText(getContext(),"Indoor"+locationManager.getGpsStatus(null),Toast.LENGTH_SHORT).show();
                         displayLocation(location);
 
-                    }
-                    else{
-                        Toast.makeText(getContext(), "Outdoor" + locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)+location.getProvider(), Toast.LENGTH_SHORT).show();
-                        //displayLocation(location);
-                    }
                 }
 
                 public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -119,7 +142,7 @@ public class TrackingFragment extends Fragment{
 
                 return;
             }
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+          //  locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
         } else {
             //set a new Timer
@@ -199,7 +222,7 @@ public class TrackingFragment extends Fragment{
                 sb.append(address.getLocality()).append("\n");
                 sb.append(address.getCountryName()).append("\n");
                 sb.append(address.getPostalCode()).append("\n");
-                sb.append("("+address.getLatitude()+","+address.getLongitude()+")");
+                //sb.append("("+address.getLatitude()+","+address.getLongitude()+")");
             }
 
             addressString = sb.toString().replace("null\n", "");
@@ -229,10 +252,10 @@ public class TrackingFragment extends Fragment{
             this.timer.cancel();
         } else {
             if (ContextCompat.checkSelfPermission(this.getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this.getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
+                    locationManager.removeUpdates(locationListener);
                 return;
             }
-            locationManager.removeUpdates(locationListener);
+
         }
     }
 //.................................................................................................................

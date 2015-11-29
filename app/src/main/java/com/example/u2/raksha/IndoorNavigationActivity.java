@@ -22,6 +22,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.ls.widgets.map.MapWidget;
 import com.ls.widgets.map.model.MapLayer;
@@ -51,7 +52,7 @@ public class IndoorNavigationActivity extends AppCompatActivity implements TaskL
     private boolean mScanning;
     private Handler mHandler;
     String status;
-    BluetoothLeScanner mLEScanner;
+    private BluetoothLeScanner mLEScanner;
     private List<ScanFilter> filters;
     private ScanSettings settings;
     private int REQUEST_ENABLE_BT = 1;
@@ -59,9 +60,10 @@ public class IndoorNavigationActivity extends AppCompatActivity implements TaskL
     public static MapWidget mapWidget;
     private static final long SCAN_PERIOD = 1000000000;
     final ParseUser user = new ParseUser();
-    String bNum;
+    String bNum ="";
     TaskListener taskListener;
     String lastbNum = "";
+    private TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,22 +72,24 @@ public class IndoorNavigationActivity extends AppCompatActivity implements TaskL
         user = ParseUser.getCurrentUser();
         status = (String) user.get("status");
         mHandler = new Handler();
+        taskListener = this;
+        Intent myIntent = getIntent();
+        bNum = myIntent.getStringExtra("buildingNumber");
+        if(bNum!= null) {
+            if(!bNum.isEmpty()){
+                downloadTask(bNum);
+            }
+            else{
+                pullMap();
+            }
+        }
+
     }
     //............................................................................................................
 
     @Override
     protected void onResume() {
         super.onResume();
-        taskListener = this;
-        Intent myIntent = getIntent();
-        bNum = myIntent.getStringExtra("buildingNumber");
-        if(!bNum.isEmpty()){
-            downloadTask(bNum);
-        }
-        else{
-            pullMap();
-
-        }
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
             Toast.makeText(this, R.string.message_ble_not_supported,
                     Toast.LENGTH_SHORT).show();
@@ -99,42 +103,6 @@ public class IndoorNavigationActivity extends AppCompatActivity implements TaskL
         }
         mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
         scanLeDevice(true);
-    }
-    //............................................................................................................
-
-    public void unzipTask(File zipFile, File targetDirectory) throws IOException {
-        ZipInputStream zis = new ZipInputStream(
-                new BufferedInputStream(new FileInputStream(zipFile)));
-        try {
-            ZipEntry ze;
-            int count;
-            byte[] buffer = new byte[8192];
-            while ((ze = zis.getNextEntry()) != null) {
-                Toast.makeText(this.getApplicationContext(),"DONE ZIPPING",Toast.LENGTH_SHORT ).show();
-                File file = new File(targetDirectory, ze.getName());
-                File dir = ze.isDirectory() ? file : file.getParentFile();
-                if (!dir.isDirectory() && !dir.mkdirs())
-                    throw new FileNotFoundException("Failed to ensure directory: " +
-                            dir.getAbsolutePath());
-                if (ze.isDirectory()){
-                    continue;
-                }
-                FileOutputStream fout = new FileOutputStream(file);
-                try {
-                    while ((count = zis.read(buffer)) != -1)
-                        fout.write(buffer, 0, count);
-                } finally {
-                    fout.close();
-                }
-            /* if time should be restored as well
-            long time = ze.getTime();
-            if (time > 0)
-                file.setLastModified(time);
-            */
-            }
-        } finally {
-            zis.close();
-        }
     }
     //............................................................................................................
 
@@ -191,7 +159,9 @@ public class IndoorNavigationActivity extends AppCompatActivity implements TaskL
             if (Build.VERSION.SDK_INT < 21) {
                 mBluetoothAdapter.startLeScan(mLeScanCallback);
             } else {
-                mLEScanner.startScan(mScanCallback);
+                if(mLEScanner != null){
+                    mLEScanner.startScan(mScanCallback);
+                }
             }
         } else {
             if (Build.VERSION.SDK_INT < 21) {
@@ -297,10 +267,12 @@ public class IndoorNavigationActivity extends AppCompatActivity implements TaskL
         }
     }
     //............................................................................................................
+/*
     public void onBackPressed() {
         Intent intent = new Intent(IndoorNavigationActivity.this,MainActivity.class);
         startActivity(intent);
     }
+*/
 
     @Override
     public void taskComplete(ArrayList<String> list) {

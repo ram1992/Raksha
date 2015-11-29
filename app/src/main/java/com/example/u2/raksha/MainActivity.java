@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     ParseUser user = ParseUser.getCurrentUser();
+    boolean isRegisterd = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
