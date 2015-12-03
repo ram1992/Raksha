@@ -7,7 +7,7 @@
     <string name="parse_client_id">ds</string>
 
 
-            <!-- Sign in related strings-->
+    <!-- Sign in related strings-->
     <string name="title_activity_signup">Sign up</string>
     <string name="prompt_name">Full Name</string>
     <string name="prompt_username">Email-ID</string>
@@ -28,7 +28,7 @@
     <!-- Sign up related strings-->
     <string name="title_activity_welcome">WelcomeActivity</string>
 
-    
+
     <string name="powered_by">Powered by</string>
     <string name="parse">Raksha</string>
     <string name="slogan">Always in your arms</string>
@@ -80,15 +80,24 @@
     <string name="title_activity_login">Raksha</string>
     <string name="title_activity_sign_up">Sign Up</string>
 
-    <string-array
-        name="tab_array">
+    <string-array name="tab_array">
         <item>TAB 1</item>
         <item>TAB 2</item>
         <item>TAB 3</item>
     </string-array>
-    <string name="title_activity_main2">Main2Activity</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="nav_drawer_items">
+        <item>Home</item>
+        <item>Find People</item>
+        <item>Photos</item>
+        <item>Communities</item>
+        <item>Pages</item>
+        <item>What\'s Hot</item>
+    </string-array>
 
 </resources>

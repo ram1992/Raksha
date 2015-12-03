@@ -10,4 +10,10 @@
     <color name="colorRaisedNormal2">#bdbdbd</color>
     <color name="colorBackground">#455a64</color>
     <color name="colorCardView">#cfd8dc</color>
+    <color name="counter_text_bg">#000000</color>
+    <color name="list_background">#000000</color>
+    <color name="list_background_pressed">#000000</color>
+    <color name="list_divider">#000000</color>
+    <color name="list_item_title">#000000</color>
+    <color name="counter_text_color">#000000</color>
 </resources>
