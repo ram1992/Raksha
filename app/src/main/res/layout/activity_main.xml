@@ -50,9 +50,8 @@
         <ImageView
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:id="@+id/buttton_photo"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/person_default_page"/>
+        android:id="@+id/nav_pic"
+        android:layout_alignParentTop="true" />
 
         <TextView
             android:id="@+id/nav_text_view"

@@ -164,7 +164,7 @@ public class TrackingFragment extends Fragment {
             StringBuilder sb = new StringBuilder();
             if (addresses.size() > 0) {
                 Address address = addresses.get(0);
-                sb.append(address.getUrl().trim()).append("\n");
+                sb.append(address.getUrl()).append("\n");
                 sb.append(address.getThoroughfare()).append("\n");
                 sb.append(address.getSubLocality()).append("\n");
                 sb.append(address.getSubAdminArea()).append("\n");
