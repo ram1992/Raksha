@@ -25,16 +25,9 @@ public class DispatchActivity extends Activity {
         // Check if there is current user info
         if (ParseUser.getCurrentUser() != null) {
             // Start an intent for the logged in activity
-            handler.postDelayed(new Runnable() {
-
-                public void run() {
                     Intent intent = new Intent(DispatchActivity.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    //intent.putExtra("currentUser", ParseUser.getCurrentUser());
                     startActivity(intent);
-                }
-            }
-                ,3000);
             }else {
             handler.postDelayed(new Runnable() {
 

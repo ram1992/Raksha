@@ -19,6 +19,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.LinearLayout;
@@ -31,9 +32,13 @@ import com.ls.widgets.map.utils.PivotFactory;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import org.json.JSONArray;
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -64,6 +69,8 @@ public class IndoorNavigationActivity extends AppCompatActivity implements TaskL
     TaskListener taskListener;
     String lastbNum = "";
     private TextView textView;
+    ArrayList<String> bluetoothPosition;
+    ArrayList<String> bluetoothId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,7 +109,7 @@ public class IndoorNavigationActivity extends AppCompatActivity implements TaskL
             mBluetoothAdapter.enable();
         }
         mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
-        scanLeDevice(true);
+
     }
     //............................................................................................................
 
@@ -117,20 +124,22 @@ public class IndoorNavigationActivity extends AppCompatActivity implements TaskL
         LinearLayout layout = (LinearLayout) findViewById(R.id.indoor);
         layout.setBackgroundColor(0xFFFFFFFF);
         layout.addView(mapWidget);
+        scanLeDevice(true);
     }
     //............................................................................................................
 
-    private void downloadTask(String i) {
-        bNum="";
+    private void downloadTask(String buildingNum) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(getString(R.string.parse_indoor));
-        query.whereEqualTo(getString(R.string.parse_building_id), i);
+        query.whereEqualTo(getString(R.string.parse_building_id), buildingNum);
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> list, ParseException e) {
                 if (e == null) {
                     ParseObject result = list.get(0);
                     ParseFile map = result.getParseFile(getString(R.string.parse_building_plan));
+                    bluetoothId = (ArrayList<String>) result.get("bluetoothId");
+                    bluetoothPosition = (ArrayList<String>) result.get("bluetoothPosition");
                     String url = map.getUrl();
-                    final DownloadTask downloadTask = new DownloadTask(IndoorNavigationActivity.this,taskListener);
+                    final DownloadTask downloadTask = new DownloadTask(IndoorNavigationActivity.this, taskListener);
                     AsyncTask<String, Integer, String> results = downloadTask.execute(url);
                 } else {
                     Log.d("score", "Error: " + e.getMessage());
@@ -159,9 +168,7 @@ public class IndoorNavigationActivity extends AppCompatActivity implements TaskL
             if (Build.VERSION.SDK_INT < 21) {
                 mBluetoothAdapter.startLeScan(mLeScanCallback);
             } else {
-                if(mLEScanner != null){
-                    mLEScanner.startScan(mScanCallback);
-                }
+                mLEScanner.startScan(mScanCallback);
             }
         } else {
             if (Build.VERSION.SDK_INT < 21) {
@@ -181,17 +188,21 @@ public class IndoorNavigationActivity extends AppCompatActivity implements TaskL
             Log.i("callbackType", String.valueOf(callbackType));
             Log.i("result", result.toString());
             BluetoothDevice btDevice = result.getDevice();
-/*
-            if(btDevice.toString().equalsIgnoreCase("64:5A:04:56:E3:18")){
-                Toast.makeText(IndoorNavigationActivity.this.getApplication(),btDevice.toString()+"I m here",Toast.LENGTH_SHORT).show();
+            if(bluetoothId.size() > 0){
+                int i = bluetoothId.indexOf(btDevice.toString());
+                String loc = bluetoothPosition.get(i);
+                Toast.makeText(IndoorNavigationActivity.this.getApplicationContext(),loc,Toast.LENGTH_LONG).show();
+                String[] blLoc = new String[2];
+                blLoc = loc.split(",");
+                placePointer(Integer.parseInt(blLoc[0]),Integer.parseInt(blLoc[1]));
             }
-*/
-            placePointer(300, 800);
+
             if (btDevice.getName() != null) {
-                Toast.makeText(IndoorNavigationActivity.this.getApplication(), btDevice.getName().toString() + " I am here", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(IndoorNavigationActivity.this.getApplication(), btDevice.getName().toString() + " I am here", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(IndoorNavigationActivity.this.getApplication(), btDevice.toString() + " I am here", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(IndoorNavigationActivity.this.getApplication(), btDevice.toString() + " I am here", Toast.LENGTH_SHORT).show();
             }
+
         }
 
         @Override
@@ -214,7 +225,7 @@ public class IndoorNavigationActivity extends AppCompatActivity implements TaskL
         MapLayer layer = mapWidget.createLayer(LAYER_ID);
 
         // getting icon from assets
-        Drawable icon = getResources().getDrawable(R.drawable.maps_blue_dot);
+        Drawable icon = ContextCompat.getDrawable(this,R.drawable.indoor_location);
 
         // set ID for the object
         final long OBJ_ID = 25;

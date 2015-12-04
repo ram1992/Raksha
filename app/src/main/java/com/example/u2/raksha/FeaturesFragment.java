@@ -12,11 +12,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.parse.ParseUser;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class FeaturesFragment extends Fragment{
+    ParseUser user;
+    String status;
     private RecyclerView recyclerview;
     private List<CardData> cardDataList;
     public FeaturesFragment() {
@@ -31,6 +35,8 @@ public class FeaturesFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        user = ParseUser.getCurrentUser();
+        status = (String) user.get(getString(R.string.status));
         // Inflate the layout for this fragment
         View myFragmentView = inflater.inflate(R.layout.fragment_features, container, false);
         recyclerview = (RecyclerView)myFragmentView.findViewById(R.id.drawerlist);
@@ -50,7 +56,11 @@ public class FeaturesFragment extends Fragment{
         cardDataList = new ArrayList<>();
         cardDataList.add(new CardData("Call Police", R.drawable.safe_true));
         cardDataList.add(new CardData("Send Child Information to Police", R.drawable.safe_true));
-        cardDataList.add(new CardData("Call Child", R.drawable.safe_true));
+        if (status.equalsIgnoreCase("child")){
+            cardDataList.add(new CardData("Call Parent", R.drawable.safe_true));
+        }else{
+            cardDataList.add(new CardData("Call Child", R.drawable.safe_true));
+        }
         cardDataList.add(new CardData("Register For Indoor Navigation", R.drawable.safe_true));
     }
 

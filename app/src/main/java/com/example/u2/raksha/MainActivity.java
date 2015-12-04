@@ -15,6 +15,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -24,9 +25,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,74 +43,128 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    ParseUser user = ParseUser.getCurrentUser();
-    boolean isRegisterd = false;
+    ParseUser user;
     private ListView mDrawerList;
     private ArrayAdapter<String> mAdapter;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
     private String mActivityTitle;
     private CardView mCardview;
+    TextView mTextview;
+    String status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        user = ParseUser.getCurrentUser();
+        status = (String) user.get(getString(R.string.status));
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-        mDrawerList = (ListView)findViewById(R.id.navList);
+
+        mDrawerList = (ListView) findViewById(R.id.navList);
         mCardview = (CardView) findViewById(R.id.nav_card_view);
         addDrawerItems();
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mActivityTitle = getTitle().toString();
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                LayoutInflater li = LayoutInflater.from(mContext);
-                View promptsView = li.inflate(R.layout.prompt_indoor, null);
-
-                android.support.v7.app.AlertDialog.Builder alertDialogBuilder = new android.support.v7.app.AlertDialog.Builder(
-                        mContext);
-
-                // set prompts.xml to alertdialog builder
-                alertDialogBuilder.setView(promptsView);
-
-                final EditText userInput = (EditText) promptsView
-                        .findViewById(R.id.editText_buildingnum);
-
-                // set dialog message
-                alertDialogBuilder
-                        .setCancelable(true)
-                        .setPositiveButton("Done",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        // get user input and set it to result
-                                        // edit tex
-                                        if (id == KeyEvent.KEYCODE_BACK){
-                                            dialog.dismiss();
-                                        }
-                                       // user.set
-                                    }
-                                });
-                // create alert dialog
-                android.support.v7.app.AlertDialog alertDialog = alertDialogBuilder.create();
-
-                // show it
-                alertDialog.show();
-                alertDialog.getWindow().setLayout(1000,1000);
+                if(position == 0 || position == 1)
+                displyDialog(position);
             }
         });
         setupDrawer();
+        mTextview = (TextView) findViewById(R.id.nav_text_view);
+        mTextview.setText(user.get("fullName").toString() + "\n" + user.getUsername());
+
     }
+
+    //...........................................................................................
+    private void displyDialog(final int position) {
+
+        LayoutInflater li = LayoutInflater.from(MainActivity.this);
+        View promptsView = li.inflate(R.layout.prompt_indoor, null);
+
+        android.support.v7.app.AlertDialog.Builder alertDialogBuilderMinPts = new android.support.v7.app.AlertDialog.Builder(
+                MainActivity.this);
+
+        // set prompts.xml to alertdialog builder
+        alertDialogBuilderMinPts.setView(promptsView);
+
+        final EditText userInput = (EditText) promptsView
+                .findViewById(R.id.editText_dialog_info);
+        final TextView textView = (TextView) promptsView.findViewById(R.id.textview_dialog);
+        if(position == 0){
+            textView.setText("Please Enter Minimum Duration For Secured Areas");
+        }else{
+            textView.setText("Please Enter Minimum Distance For Secured Areas");
+        }
+
+        // set dialog message
+        alertDialogBuilderMinPts
+                .setCancelable(true)
+                .setPositiveButton("Done",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(final DialogInterface dialog, int id) {
+                                if (id == KeyEvent.KEYCODE_BACK) {
+                                    dialog.dismiss();
+                                }
+                                ParseQuery<ParseObject> query = ParseQuery.getQuery("Child");
+                                if(status.equalsIgnoreCase("child")){
+                                    query.whereEqualTo("emailId", user.getUsername());
+                                }
+                                else{
+                                    query.whereEqualTo("parentEmailId", user.getUsername());
+                                }
+                                query.findInBackground(new FindCallback<ParseObject>() {
+                                    public void done(List<ParseObject> list, ParseException e) {
+                                        if (e == null) {
+                                            ParseObject result = list.get(0);
+                                            if(position == 0){
+                                                result.put("minDuration",userInput.getText().toString());
+                                            }else{
+                                                result.put("minDistance", userInput.getText().toString());
+                                            }
+                                            result.saveInBackground(new SaveCallback() {
+                                                public void done(ParseException e) {
+                                                    if (e == null) {
+                                                        dialog.dismiss();
+                                                    } else {
+                                                        // The save failed.
+                                                    }
+                                                }
+                                            });
+                                        } else {
+                                            Log.d("score", "Error: " + e.getMessage());
+                                            Toast.makeText(MainActivity.this, R.string.error_internet_connection_database, Toast.LENGTH_LONG)
+                                                    .show();
+                                        }
+                                    }
+                                });
+                            }
+                        });
+        // create alert dialog
+        android.support.v7.app.AlertDialog alertDialog = alertDialogBuilderMinPts.create();
+
+        // show it
+        alertDialog.show();
+        alertDialog.getWindow().setLayout(1000, 1000);
+
+    }
+
     //...........................................................................................
     private void setupDrawer() {
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,toolbar,
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar,
                 R.string.drawer_open, R.string.drawer_close) {
 
             /** Called when a drawer has settled in a completely open state. */
@@ -121,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-        if (toolbar != null){
+        if (toolbar != null) {
             setSupportActionBar(toolbar);
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -129,14 +190,11 @@ public class MainActivity extends AppCompatActivity {
     }
     // ................................................................................................
 
-    private void addDrawerItems(){
-        String[] osArray = { "Set Min Points", "Set Min Distance"};
+    private void addDrawerItems() {
+        String[] osArray = {"Set Min Points", "Set Min Distance", "Subsribe Indoor Map"};
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray);
         mDrawerList.setAdapter(mAdapter);
     }
-    //............................................................................................................
-
-
     //............................................................................................................
 
     private void setupViewPager(ViewPager viewPager) {

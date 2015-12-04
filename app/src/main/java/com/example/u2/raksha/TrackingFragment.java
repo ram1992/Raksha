@@ -21,10 +21,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,14 +36,13 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Created by Ram on 11/15/2015.
  */
 
 
-public class TrackingFragment extends Fragment{
+public class TrackingFragment extends Fragment {
     private static final String TAG = "BroadcastTest";
     String status;
     String latitude;
@@ -56,10 +52,10 @@ public class TrackingFragment extends Fragment{
     TextView text2;
     ImageView image;
     Timer timer;
-    TimerTask timerTask;
     LocationManager locationManager;
     LocationListener locationListener;
     Handler handler;
+
     public TrackingFragment() {
         // Required empty public constructor
     }
@@ -77,10 +73,14 @@ public class TrackingFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myFragmentView = inflater.inflate(R.layout.fragment_tracking, container, false);
-        text2 = (TextView)myFragmentView.findViewById(R.id.textview_welcome);
-        text2.setText("Hi "+user.getString("fullName"));
-        image = (ImageView)myFragmentView.findViewById(R.id.imageView_login_loading);
-        text1 = (TextView)myFragmentView.findViewById(R.id.textview_location);
+        text2 = (TextView) myFragmentView.findViewById(R.id.textview_welcome);
+        if(status.equalsIgnoreCase("child")){
+            text2.setText("Hi " + user.getString("fullName") + "\n\n\nCurrent Location:");
+        }else{
+            text2.setText("Hi " + user.getString("fullName") + "\n\n\nChild's Current Location:");
+        }
+        image = (ImageView) myFragmentView.findViewById(R.id.imageView_login_loading);
+        text1 = (TextView) myFragmentView.findViewById(R.id.textview_dialog);
         text1.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -102,9 +102,9 @@ public class TrackingFragment extends Fragment{
 
             }
         });
-        handler= new Handler();
+        handler = new Handler();
 
-        CardView card = (CardView)myFragmentView.findViewById(R.id.card_view);
+        CardView card = (CardView) myFragmentView.findViewById(R.id.card_view);
         card.setOnLongClickListener(new View.OnLongClickListener() {
             public boolean onLongClick(View v) {
                 showMap();
@@ -113,6 +113,7 @@ public class TrackingFragment extends Fragment{
         });
         return myFragmentView;
     }
+
     private void pullLocation() {
         if (status.equals(getString(R.string.child))) {
             // Acquire a reference to the system Location Manager
@@ -122,7 +123,7 @@ public class TrackingFragment extends Fragment{
             locationListener = new LocationListener() {
                 public void onLocationChanged(Location location) {
                     // Called when a new location is found by the network location provider.
-                        displayLocation(location);
+                    displayLocation(location);
 
                 }
 
@@ -142,12 +143,12 @@ public class TrackingFragment extends Fragment{
 
                 return;
             }
-          //  locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+            //  locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
         } else {
             //set a new Timer
             timer = new Timer();
-            handler.postDelayed(runnable,10000);
+            handler.postDelayed(runnable, 10000);
         }
 
     }
@@ -163,7 +164,7 @@ public class TrackingFragment extends Fragment{
             StringBuilder sb = new StringBuilder();
             if (addresses.size() > 0) {
                 Address address = addresses.get(0);
-                sb.append(address.getUrl()).append("\n");
+                sb.append(address.getUrl().trim()).append("\n");
                 sb.append(address.getThoroughfare()).append("\n");
                 sb.append(address.getSubLocality()).append("\n");
                 sb.append(address.getSubAdminArea()).append("\n");
@@ -173,7 +174,7 @@ public class TrackingFragment extends Fragment{
                 sb.append(address.getPostalCode()).append("\n");
             }
 
-            addressString = sb.toString().replace("null\n", "");
+            addressString = sb.toString().trim().replace("null\n", "");
 
             Log.e("Address from lat,long ;", addressString);
         } catch (IOException e) {
@@ -252,7 +253,7 @@ public class TrackingFragment extends Fragment{
             this.timer.cancel();
         } else {
             if (ContextCompat.checkSelfPermission(this.getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this.getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    locationManager.removeUpdates(locationListener);
+                locationManager.removeUpdates(locationListener);
                 return;
             }
 

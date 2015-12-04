@@ -120,7 +120,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         alertDialogBuilder.setView(promptsView);
 
         final EditText userInput = (EditText) promptsView
-                .findViewById(R.id.editText_buildingnum);
+                .findViewById(R.id.editText_dialog_info);
+        final TextView textView = (TextView) promptsView.findViewById(R.id.textview_dialog);
+        textView.setText("Please Enter Building Number");
 
         // set dialog message
         alertDialogBuilder

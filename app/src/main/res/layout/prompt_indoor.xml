@@ -11,18 +11,18 @@
         card_view:cardBackgroundColor="@color/windowBackground">
 
         <TextView
-            android:id="@+id/textview_location"
+            android:id="@+id/textview_dialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Please Enter The Buliding Number"
             android:textSize="20dp"
             android:layout_centerInParent="true"
             android:layout_gravity="top"
+            android:textAlignment="center"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:textColor="@color/textColorPrimary"/>
 
         <EditText
-            android:id="@+id/editText_buildingnum"
+            android:id="@+id/editText_dialog_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
