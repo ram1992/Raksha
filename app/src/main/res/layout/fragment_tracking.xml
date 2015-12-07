@@ -24,7 +24,7 @@
             android:layout_centerInParent="true"
             android:textColor="@color/colorAccent" />
         <TextView
-            android:id="@+id/textview_dialog"
+            android:id="@+id/textview_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
@@ -32,6 +32,14 @@
             android:textColor="@color/colorAccent"
             android:layout_marginTop="180dp"
             />
+        <TextView
+            android:id="@+id/textview_locationUpdateAt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:layout_marginLeft="200dp"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="360dp" />
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/imageView_login_loading"

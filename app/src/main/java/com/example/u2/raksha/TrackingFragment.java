@@ -33,6 +33,8 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
@@ -50,12 +52,13 @@ public class TrackingFragment extends Fragment {
     ParseUser user;
     TextView text1;
     TextView text2;
+    TextView text3;
     ImageView image;
     Timer timer;
     LocationManager locationManager;
     LocationListener locationListener;
     Handler handler;
-
+    String sdate;
     public TrackingFragment() {
         // Required empty public constructor
     }
@@ -74,13 +77,14 @@ public class TrackingFragment extends Fragment {
         // Inflate the layout for this fragment
         View myFragmentView = inflater.inflate(R.layout.fragment_tracking, container, false);
         text2 = (TextView) myFragmentView.findViewById(R.id.textview_welcome);
-        if(status.equalsIgnoreCase("child")){
+        if (status.equalsIgnoreCase("child")) {
             text2.setText("Hi " + user.getString("fullName") + "\n\n\nCurrent Location:");
-        }else{
-            text2.setText("Hi " + user.getString("fullName") + "\n\n\nChild's Current Location:");
+        } else {
+            text2.setText("Hi " + user.getString("fullName") + "\n\n\nChild's Last Location:");
         }
         image = (ImageView) myFragmentView.findViewById(R.id.imageView_login_loading);
-        text1 = (TextView) myFragmentView.findViewById(R.id.textview_dialog);
+        text1 = (TextView) myFragmentView.findViewById(R.id.textview_location);
+        text3 = (TextView) myFragmentView.findViewById(R.id.textview_locationUpdateAt);
         text1.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -180,6 +184,9 @@ public class TrackingFragment extends Fragment {
         } catch (IOException e) {
         }
         text1.setText(addressString + "\n" + "(" + location.getLatitude() + "," + location.getLongitude() + ")");
+        Date date = Calendar.getInstance().getTime();
+        sdate = date.toString();
+        text3.setText("Last Updated at"+"\n"+sdate);
         updateLocation(location);
     }
     //............................................................................................................
@@ -190,10 +197,11 @@ public class TrackingFragment extends Fragment {
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> list, ParseException e) {
                 if (e == null) {
-                    ParseObject currentLocation = list.get(0);
+                    ParseObject result = list.get(0);
                     ParseGeoPoint point = new ParseGeoPoint(location.getLatitude(), location.getLongitude());
-                    currentLocation.put("currentLocation", point);
-                    currentLocation.saveInBackground();
+                    result.put("currentLocation", point);
+                    result.put("locationUpdateAt",sdate);
+                    result.saveInBackground();
 
                 } else {
                     Log.d("score", "Error: " + e.getMessage());
@@ -206,7 +214,7 @@ public class TrackingFragment extends Fragment {
     }
     //............................................................................................................
 
-    private void displayLocation(ParseGeoPoint location) {
+    private void displayLocation(ParseGeoPoint location,String date){
         latitude = "" + location.getLatitude();
         longitude = "" + location.getLongitude();
         String addressString = null;
@@ -232,6 +240,7 @@ public class TrackingFragment extends Fragment {
         } catch (IOException e) {
         }
         text1.setText(addressString + "\n" + "(" + location.getLatitude() + "," + location.getLongitude() + ")");
+        text3.setText("Last Updated at"+"\n"+date);
     }
 
     //.................................................................................................................
@@ -294,7 +303,8 @@ public class TrackingFragment extends Fragment {
                         Log.d("Users", "Retrieved " + list.size() + " users");
                         if (list.size() > 0) {
                             ParseGeoPoint location = list.get(0).getParseGeoPoint("currentLocation");
-                            displayLocation(location);
+                            String date = list.get(0).getString("locationUpdateAt");
+                            displayLocation(location,date);
                             Boolean safe = list.get(0).getBoolean("isSafe");
                             if (safe != null) {
 //                                checkSafety(Boolean.toString(safe));

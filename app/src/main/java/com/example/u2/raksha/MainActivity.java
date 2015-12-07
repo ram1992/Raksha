@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText userInput = (EditText) promptsView
                 .findViewById(R.id.editText_dialog_info);
-        final TextView textView = (TextView) promptsView.findViewById(R.id.textview_dialog);
+        final TextView textView = (TextView) promptsView.findViewById(R.id.textview_diaolg);
         if(position == 0){
             textView.setText("Please Enter Minimum Duration For Secured Areas");
         }else{

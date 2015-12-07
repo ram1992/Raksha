@@ -1,6 +1,7 @@
 package com.example.u2.raksha;
 
 import android.annotation.TargetApi;
+import android.app.Fragment;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
@@ -19,6 +20,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -134,13 +136,19 @@ public class IndoorNavigationActivity extends AppCompatActivity implements TaskL
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> list, ParseException e) {
                 if (e == null) {
-                    ParseObject result = list.get(0);
-                    ParseFile map = result.getParseFile(getString(R.string.parse_building_plan));
-                    bluetoothId = (ArrayList<String>) result.get("bluetoothId");
-                    bluetoothPosition = (ArrayList<String>) result.get("bluetoothPosition");
-                    String url = map.getUrl();
-                    final DownloadTask downloadTask = new DownloadTask(IndoorNavigationActivity.this, taskListener);
-                    AsyncTask<String, Integer, String> results = downloadTask.execute(url);
+                    if (list.size() > 0) {
+                        ParseObject result = list.get(0);
+                        ParseFile map = result.getParseFile(getString(R.string.parse_building_plan));
+                        bluetoothId = (ArrayList<String>) result.get("bluetoothId");
+                        bluetoothPosition = (ArrayList<String>) result.get("bluetoothPosition");
+                        String url = map.getUrl();
+                        final DownloadTask downloadTask = new DownloadTask(IndoorNavigationActivity.this, taskListener);
+                        AsyncTask<String, Integer, String> results = downloadTask.execute(url);
+                    } else {
+                        Intent intent = new Intent(IndoorNavigationActivity.this,MainActivity.class);
+                        Toast.makeText(IndoorNavigationActivity.this,"Invalid BUilding ID",Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
+                    }
                 } else {
                     Log.d("score", "Error: " + e.getMessage());
                     Toast.makeText(IndoorNavigationActivity.this, R.string.error_internet_connection_database, Toast.LENGTH_LONG)

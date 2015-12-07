@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.List;
@@ -121,7 +122,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         final EditText userInput = (EditText) promptsView
                 .findViewById(R.id.editText_dialog_info);
-        final TextView textView = (TextView) promptsView.findViewById(R.id.textview_dialog);
+        final TextView textView = (TextView) promptsView.findViewById(R.id.textview_diaolg);
         textView.setText("Please Enter Building Number");
 
         // set dialog message
@@ -135,9 +136,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                                 if (id == KeyEvent.KEYCODE_BACK){
                                     dialog.dismiss();
                                 }
+                                if(!userInput.getText().toString().isEmpty()){
                                 Intent intent = new Intent(mContext,IndoorNavigationActivity.class);
                                 intent.putExtra("buildingNumber",userInput.getText().toString());
                                 mContext.startActivity(intent);
+                                }
+                                else{
+                                    Toast.makeText(mContext.getApplicationContext(),"Please enter a building ID",Toast.LENGTH_SHORT).show();
+                                }
                             }
                         });
         // create alert dialog
