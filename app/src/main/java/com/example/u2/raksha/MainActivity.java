@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         status = (String) user.get(getString(R.string.status));
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
